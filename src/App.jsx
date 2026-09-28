@@ -19,6 +19,9 @@ import Terms from "./Component/Terms";
 import NotFound from "./Component/NotFound";
 import BackToTop from "./Component/BackToTop";
 import ScrollToTop from "./Component/ScrollToTop";
+import AcServiceMumbai from "./Component/AcServiceMumbai";
+import AcServiceNaviMumbai from "./Component/AcServiceNaviMumbai";
+import AcServiceThane from "./Component/AcServiceThane";
 function App() {
   return (
     <BrowserRouter>
@@ -51,7 +54,20 @@ function App() {
 
         <Route path="*" element={<NotFound />} />
         
-        
+        <Route
+  path="/ac-service-mumbai"
+  element={<AcServiceMumbai />}
+/>
+
+<Route
+  path="/ac-service-navi-mumbai"
+  element={<AcServiceNaviMumbai />}
+/>
+
+<Route
+  path="/ac-service-thane"
+  element={<AcServiceThane />}
+/>
     
         
 

@@ -166,7 +166,7 @@ const acBrands = [
               <div className="heroImageWrapper">
 
                 <img
-                  src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=1100&q=80"
+                  src="/images/heroac.jpg"
                   alt="AC Service Technician"
                   className="img-fluid heroMainImage"
                 />
