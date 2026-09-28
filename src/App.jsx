@@ -18,10 +18,11 @@ import PrivacyPolicy from "./Component/PrivacyPolicy";
 import Terms from "./Component/Terms";
 import NotFound from "./Component/NotFound";
 import BackToTop from "./Component/BackToTop";
+import ScrollToTop from "./Component/ScrollToTop";
 function App() {
   return (
     <BrowserRouter>
-
+      <ScrollToTop />
       <Navbar />
 
       <Routes>
