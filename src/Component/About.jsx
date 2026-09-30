@@ -44,7 +44,7 @@ const About = () => {
             <div className="col-lg-6">
 
               <img
-                src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=1000&q=80"
+                src="/images/acrepair.jpg"
                 alt="AC Technician"
                 className="img-fluid rounded-4 shadow"
                 style={{
