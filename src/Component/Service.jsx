@@ -13,7 +13,7 @@ const Service = () => {
     {
       title: "AC Repair",
       image:
-        "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=900&q=80",
+        "/images/acrepair.jpg",
       description:
         "Cooling issue, noise, water leakage, AC not starting aur other common problems ke liye professional AC repair service.",
       includes: [
@@ -30,7 +30,7 @@ const Service = () => {
     {
       title: "AC Installation",
       image:
-        "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=900&q=80",
+        "/images/acinstallation.jpg",
       description:
         "Split AC aur Window AC ke liye proper installation service with basic testing.",
       includes: [
@@ -47,7 +47,7 @@ const Service = () => {
     {
       title: "AC Deep Cleaning",
       image:
-        "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=900&q=80",
+        "/images/acdeepcleaning.jpeg",
       description:
         "Dust, dirty filters aur blocked airflow ko reduce karne ke liye detailed AC cleaning service.",
       includes: [
@@ -64,7 +64,7 @@ const Service = () => {
     {
       title: "AC Gas Refill",
       image:
-        "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=900&q=80",
+        "/images/acgasrefil.jpg",
       description:
         "Gas pressure aur refrigerant related problem ke liye technician inspection aur required service.",
       includes: [
@@ -81,7 +81,7 @@ const Service = () => {
     {
       title: "AC Maintenance",
       image:
-        "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=900&q=80",
+        "/images/ACMaintenance.png",
       description:
         "Regular AC maintenance se performance ko better maintain karne aur common problems ko reduce karne me help milti hai.",
       includes: [
@@ -98,7 +98,7 @@ const Service = () => {
     {
       title: "AC Uninstallation",
       image:
-        "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80",
+        "/images/AC Uninstallation.jpeg",
       description:
         "Relocation ya replacement ke liye AC indoor aur outdoor unit ko safely remove karne ki service.",
       includes: [

@@ -53,25 +53,25 @@ const Home = () => {
   title: "AC Repair",
   text: "Cooling issue, noise, leakage aur other AC problems ki professional repair.",
   image:
-    "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=900&q=80",
+    "/images/acrepair.jpg",
 },
     {
       title: "AC Installation",
       text: "Split aur window AC ki safe aur professional installation service.",
       image:
-        "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=900&q=80",
+        "/images/acinstallation.jpg",
     },
     {
       title: "AC Cleaning",
       text: "Filter, indoor unit aur AC parts ki deep cleaning.",
       image:
-        "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=900&q=80",
+        "/images/acdeepcleaning.jpeg",
     },
     {
       title: "AC Maintenance",
       text: "Regular service se cooling better aur electricity consumption controlled rahe.",
       image:
-        "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=900&q=80",
+        "/images/ACMaintenance.png",
     },
     
 
