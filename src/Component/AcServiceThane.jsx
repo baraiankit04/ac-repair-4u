@@ -1,3 +1,4 @@
+
 import React from "react";
 import LocalServicePage from "./LocalServicePage";
 
@@ -5,8 +6,9 @@ const AcServiceThane = () => {
   return (
     <LocalServicePage
       city="Thane"
-      title="AC Repair & Service in Thane | AC Repair 4U"
-      description="Book AC repair, cleaning, installation and maintenance services across Thane. Check available service areas and book AC service online."
+      title="AC Repair & Servicing in Thane | AC Repair 4U"
+      description="Need AC repair near you in Thane? Request AC servicing, gas filling, installation, cleaning and maintenance in Thane West, Majiwada, Wagle Estate and nearby areas."
+      intro="AC Repair 4U accepts AC service enquiries across Thane. Whether your AC is not cooling, needs regular servicing or requires installation, you can submit a booking request and confirm service availability with our team."
       areas={[
         "Thane West",
         "Thane East",
@@ -16,6 +18,14 @@ const AcServiceThane = () => {
         "Kopri",
         "Kalwa",
         "Mumbra",
+        "Ghodbunder Road",
+        "Manpada",
+        "Balkum",
+        "Kasarvadavali",
+        "Vartak Nagar",
+        "Naupada",
+        "Panchpakhadi",
+        "Kolshet Road",
       ]}
     />
   );

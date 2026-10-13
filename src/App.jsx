@@ -22,9 +22,11 @@ import ScrollToTop from "./Component/ScrollToTop";
 import AcServiceMumbai from "./Component/AcServiceMumbai";
 import AcServiceNaviMumbai from "./Component/AcServiceNaviMumbai";
 import AcServiceThane from "./Component/AcServiceThane";
+import BusinessSchema from "./Component/BusinessSchema";
 function App() {
   return (
     <BrowserRouter>
+    <BusinessSchema />
       <ScrollToTop />
       <Navbar />
 
