@@ -1,445 +1,480 @@
+
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import SEO from "./SEO";
 import "./Home.css";
+
+const words = [
+  "AC Repair",
+  "AC Servicing",
+  "AC Gas Filling",
+  "AC Installation",
+  "AC Deep Cleaning",
+  "AC Maintenance",
+];
+
+const services = [
+  {
+    title: "AC Repair",
+    description:
+      "AC not cooling, water leakage, unusual noise or other problems? Request professional AC repair.",
+    image: "/images/acrepair.jpg",
+  },
+  {
+    title: "AC Installation",
+    description:
+      "Split AC and window AC installation, fitting and relocation support.",
+    image: "/images/acinstallation.jpg",
+  },
+  {
+    title: "AC Cleaning & Servicing",
+    description:
+      "AC filter cleaning, indoor unit cleaning, deep cleaning and regular servicing.",
+    image: "/images/acdeepcleaning.jpeg",
+  },
+  {
+    title: "AC Maintenance",
+    description:
+      "Routine AC maintenance, inspection and performance checks for homes and offices.",
+    image: "/images/ACMaintenance.png",
+  },
+];
+
+const brands = [
+  "Daikin", "LG", "Samsung", "Voltas",
+  "Blue Star", "Hitachi", "Carrier",
+  "Panasonic", "Lloyd", "Godrej",
+  "Haier", "O General",
+];
+
+const locations = {
+  Mumbai: [
+    "Andheri", "Bandra", "Borivali",
+    "Dadar", "Goregaon", "Malad",
+    "Powai", "Kurla", "Ghatkopar",
+    "Chembur", "Mulund", "Bhandup",
+    "Kandivali", "Jogeshwari", "Sion",
+    "Vikhroli", "Santacruz", "Worli",
+  ],
+  "Navi Mumbai": [
+    "Vashi", "Sanpada", "Nerul",
+    "Seawoods", "CBD Belapur", "Kharghar",
+    "Airoli", "Ghansoli", "Kopar Khairane",
+    "Turbhe", "Juinagar", "Ulwe",
+  ],
+  Thane: [
+    "Thane West", "Thane East",
+    "Majiwada", "Wagle Estate",
+    "Kopri", "Kalwa", "Mumbra",
+  ],
+};
+
+const cityLinks = [
+  {
+    name: "Mumbai",
+    path: "/ac-service-mumbai",
+    icon: "🏙️",
+  },
+  {
+    name: "Navi Mumbai",
+    path: "/ac-service-navi-mumbai",
+    icon: "📍",
+  },
+  {
+    name: "Thane",
+    path: "/ac-service-thane",
+    icon: "🏢",
+  },
+];
+
+const faqs = [
+  {
+    question: "How can I book AC repair near me?",
+    answer:
+      "Open our Book Service page, enter your AC problem, contact information and location. Our team will contact you regarding availability.",
+  },
+  {
+    question: "Do you provide AC servicing across Mumbai?",
+    answer:
+      "We accept service enquiries from Mumbai, Navi Mumbai and Thane. Technician availability and appointment timing depend on your exact location.",
+  },
+  {
+    question: "Does every AC require gas filling?",
+    answer:
+      "No. AC gas filling is needed only when an inspection identifies a refrigerant-related issue. Low cooling can have several other causes.",
+  },
+  {
+    question: "Do you repair split and window AC units?",
+    answer:
+      "You can request repair and servicing for split and window AC units. Share your AC brand, model and problem while booking.",
+  },
+  {
+    question: "How often should an AC be serviced?",
+    answer:
+      "Servicing frequency depends on AC usage, dust conditions and manufacturer recommendations. Regular filter cleaning and periodic inspection can help maintain performance.",
+  },
+];
+
 const Home = () => {
-
-    useEffect(() => {
-    document.title =
-      "AC Repair & Service | Fast AC Service Booking";
-  }, []);
-
-  const words = [
-    "AC Repair",
-    "AC Installation",
-    "AC Gas Refill",
-    "AC Deep Cleaning",
-    "AC Maintenance",
-  ];
-
   const [wordIndex, setWordIndex] = useState(0);
-  const [text, setText] = useState("");
-  const [deleting, setDeleting] = useState(false);
-    
+  const [typedText, setTypedText] = useState("");
+  const [areaSearch, setAreaSearch] = useState("");
 
-  
   useEffect(() => {
-    const currentWord = words[wordIndex];
+    const current = words[wordIndex];
 
-    const timer = setTimeout(
-      () => {
-        if (!deleting) {
-          setText(currentWord.substring(0, text.length + 1));
+    if (typedText.length < current.length) {
+      const timer = setTimeout(() => {
+        setTypedText(current.slice(0, typedText.length + 1));
+      }, 85);
 
-          if (text === currentWord) {
-            setTimeout(() => setDeleting(true), 900);
-          }
-        } else {
-          setText(currentWord.substring(0, text.length - 1));
+      return () => clearTimeout(timer);
+    }
 
-          if (text === "") {
-            setDeleting(false);
-            setWordIndex((prev) => (prev + 1) % words.length);
-          }
-        }
-      },
-      deleting ? 50 : 90
-    );
+    const timer = setTimeout(() => {
+      setTypedText("");
+      setWordIndex((previous) => (previous + 1) % words.length);
+    }, 1800);
 
     return () => clearTimeout(timer);
-  }, [text, deleting, wordIndex]);
+  }, [typedText, wordIndex]);
 
-  const services = [
-    {
-  title: "AC Repair",
-  text: "Cooling issue, noise, leakage aur other AC problems ki professional repair.",
-  image:
-    "/images/acrepair.jpg",
-},
-    {
-      title: "AC Installation",
-      text: "Split aur window AC ki safe aur professional installation service.",
-      image:
-        "/images/acinstallation.jpg",
-    },
-    {
-      title: "AC Cleaning",
-      text: "Filter, indoor unit aur AC parts ki deep cleaning.",
-      image:
-        "/images/acdeepcleaning.jpeg",
-    },
-    {
-      title: "AC Maintenance",
-      text: "Regular service se cooling better aur electricity consumption controlled rahe.",
-      image:
-        "/images/ACMaintenance.png",
-    },
-    
+  const allAreas = Object.entries(locations).flatMap(
+    ([city, areas]) =>
+      areas.map((name) => ({ name, city }))
+  );
 
-    
-  ];
-const acBrands = [
-  "Daikin",
-  "LG",
-  "Samsung",
-  "Voltas",
-  "Blue Star",
-  "Hitachi",
-  "Carrier",
-  "Panasonic",
-  "Lloyd",
-  "Godrej",
-  "Haier",
-  "O General",
-];
+  const filteredAreas = allAreas.filter(({ name, city }) =>
+    `${name} ${city}`
+      .toLowerCase()
+      .includes(areaSearch.trim().toLowerCase())
+  );
+
   return (
     <>
-      {/* HERO */}
+      <SEO
+        title="AC Repair & Servicing in Mumbai, Navi Mumbai & Thane"
+        description="Looking for AC repair near you? AC Repair 4U provides AC servicing, repair, gas filling, installation, cleaning and maintenance across Mumbai, Navi Mumbai and Thane."
+      />
 
+      {/* HERO SECTION */}
       <section className="homeHero">
         <div className="container">
-          <div className="row align-items-center min-vh-75">
+          <div className="row align-items-center homeHeroRow g-4">
 
-            <div className="col-lg-6 text-center text-lg-start">
+            <div className="col-12 col-lg-6">
+              <div className="homeHeroContent">
 
-              <span className="badge bg-warning text-dark px-3 py-2 mb-3">
-                Professional AC Service
-              </span>
-
-              <h1 className="display-4 fw-bold text-white">
-                Fast & Reliable
-                <br />
-
-                <span className="text-warning typewriterText">
-                  {text}
+                <span className="homeHeroBadge">
+                  ❄️ AC Repair 4U | Mumbai
                 </span>
 
-                <span className="typingCursor">|</span>
-              </h1>
+                <h1 className="homeHeroTitle">
+                  AC Repair &amp; Servicing
+                  <span> Across Mumbai</span>
+                </h1>
 
-              <p className="lead text-white-50 mt-3">
-                AC repair, installation, cleaning and maintenance service
-                at your doorstep.
-              </p>
+                <p className="homeHeroDescription">
+                  Looking for reliable AC repair near you?
+                  Book AC servicing, gas filling, installation,
+                  cleaning and maintenance across Mumbai,
+                  Navi Mumbai and Thane.
+                </p>
 
-              <div className="heroButtons mt-4">
+                <div className="homeTypingBox">
+                  <span>Our Services:</span>
+                  <strong className="homeTypedText">
+                    {typedText}
+                    <span className="homeTypingCursor">|</span>
+                  </strong>
+                </div>
 
-                <Link
-                  to="/book-service"
-                  className="btn btn-warning btn-lg px-4"
-                >
-                  Book Service
-                </Link>
+                <div className="homeHeroButtons">
+                  <Link
+                    to="/book-service"
+                    className="btn btn-warning btn-lg fw-bold"
+                  >
+                    Book AC Service →
+                  </Link>
 
-                <Link
-                  to="/ai-ac-assistant"
-                  className="btn btn-outline-light btn-lg px-4"
-                >
-                  Check AC with AI
-                </Link>
+                  <Link
+                    to="/ai-ac-assistant"
+                    className="btn btn-outline-light btn-lg"
+                  >
+                    Check AC with AI
+                  </Link>
+                </div>
+
+                <div className="homeHeroBenefits">
+                  <div>✓ Easy Booking</div>
+                  <div>✓ Technician Support</div>
+                  <div>✓ Multiple AC Brands</div>
+                </div>
 
               </div>
-
-              <div className="row mt-5 text-white heroStats">
-
-                <div className="col-4">
-                  <h4 className="fw-bold">Fast</h4>
-                  <small>Service</small>
-                </div>
-
-                <div className="col-4">
-                  <h4 className="fw-bold">Trusted</h4>
-                  <small>Technicians</small>
-                </div>
-
-                <div className="col-4">
-                  <h4 className="fw-bold">Easy</h4>
-                  <small>Booking</small>
-                </div>
-
-              </div>
-
             </div>
 
-
-            <div className="col-lg-6 mt-5 mt-lg-0">
-
-              <div className="heroImageWrapper">
-
+            <div className="col-12 col-lg-6">
+              <div className="homeHeroImageBox">
                 <img
                   src="/images/heroac.jpg"
-                  alt="AC Service Technician"
-                  className="img-fluid heroMainImage"
+                  alt="AC repair and servicing technician in Mumbai"
+                  className="homeHeroImage"
+                  fetchPriority="high"
                 />
 
-                <div className="heroFloatingCard">
-
-                  <div className="fw-bold fs-5">
-                    Need AC Service?
+                <div className="homeHeroFloatingCard">
+                  <span className="homeFloatingIcon">❄️</span>
+                  <div>
+                    <strong>Need AC Service?</strong>
+                    <small>
+                      Book a technician online
+                    </small>
                   </div>
-
-                  <small>
-                    Book a technician in a few steps.
-                  </small>
-
                 </div>
-
               </div>
-
             </div>
 
           </div>
         </div>
       </section>
 
-
       {/* SERVICES */}
-
-      <section className="py-5">
-
+      <section className="homeSection">
         <div className="container">
 
-          <div className="text-center mb-5">
-
-            <span className="text-primary fw-semibold">
+          <div className="homeSectionHeading">
+            <span className="homeEyebrow">
               OUR SERVICES
             </span>
-
-            <h2 className="fw-bold display-6 mt-2">
-              Complete AC Care
+            <h2>
+              Complete AC Repair &amp; Servicing
             </h2>
-
-            <p className="text-muted">
-              Home aur office ke liye complete AC service solution.
+            <p>
+              AC repair, installation, gas filling,
+              cleaning and maintenance for residential
+              and commercial air conditioners.
             </p>
-
           </div>
 
-
           <div className="row g-4">
-
-            {services.map((service, index) => (
-
+            {services.map((service) => (
               <div
-                className="col-sm-6 col-lg-3"
-                key={index}
+                className="col-12 col-sm-6 col-lg-3"
+                key={service.title}
               >
-
-                <div className="card serviceCard h-100 shadow-sm">
-
+                <article className="homeServiceCard">
                   <img
                     src={service.image}
-                    className="card-img-top serviceImage"
-                    alt={service.title}
+                    alt={`${service.title} service in Mumbai`}
+                    loading="lazy"
                   />
 
-                  <div className="card-body">
-
-                    <h4 className="card-title fw-bold">
-                      {service.title}
-                    </h4>
-
-                    <p className="card-text text-muted">
-                      {service.text}
-                    </p>
+                  <div className="homeServiceBody">
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
 
                     <Link
                       to="/book-service"
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary mt-auto"
                     >
-                      Book Now
+                      Book Now →
                     </Link>
-
                   </div>
-
-                </div>
-
+                </article>
               </div>
-
             ))}
-
           </div>
-
 
           <div className="text-center mt-4">
-
             <Link
               to="/services"
-              className="btn btn-primary px-4"
+              className="btn btn-primary px-4 py-2"
             >
-              View All Services
+              Explore All AC Services
             </Link>
-
           </div>
 
         </div>
-
       </section>
 
-      {/* AC BRANDS SECTION */}
-
-<section className="py-5 bg-white">
-  <div className="container">
-
-    <div className="text-center mb-5">
-      <span className="text-primary fw-semibold">
-        AC BRANDS WE SERVICE
-      </span>
-
-      <h2 className="fw-bold mt-2">
-        We Service All Major AC Brands
-      </h2>
-
-      <p
-        className="text-muted mx-auto"
-        style={{ maxWidth: "700px" }}
-      >
-        Split AC, Window AC aur other AC models ke liye
-        professional service support.
-      </p>
-    </div>
-
-    <div className="row g-3 justify-content-center">
-
-      {acBrands.map((brand, index) => (
-        <div
-          className="col-6 col-sm-4 col-md-3 col-lg-2"
-          key={index}
-        >
-          <div className="brand-card text-center h-100">
-            <div className="brand-icon mb-2">
-              ❄️
-            </div>
-
-            <h6 className="mb-0 fw-bold">
-              {brand}
-            </h6>
-          </div>
-        </div>
-      ))}
-
-    </div>
-
-    <div className="text-center mt-4">
-      <p className="text-muted mb-0">
-        Can't find your AC brand? No problem.
-        You can still book a service request.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-
-      {/* AI SECTION */}
-
-      <section className="aiHomeSection py-5">
-
+      {/* ADDITIONAL SERVICES */}
+      <section className="homeSection bg-light">
         <div className="container">
 
-          <div className="row align-items-center">
+          <div className="homeSectionHeading">
+            <span className="homeEyebrow">
+              AC SERVICE SOLUTIONS
+            </span>
+            <h2>
+              AC Gas Filling, Installation &amp; Repair
+            </h2>
+            <p>
+              Find the right service for your AC problem.
+            </p>
+          </div>
 
-            <div className="col-lg-6">
+          <div className="row g-3">
+            {[
+              {
+                icon: "🔧",
+                title: "AC Repair Near Me",
+                text: "Cooling issues, water leakage, noise and general AC faults.",
+              },
+              {
+                icon: "❄️",
+                title: "AC Servicing Near Me",
+                text: "Regular AC servicing, filter cleaning and maintenance.",
+              },
+              {
+                icon: "💨",
+                title: "AC Gas Filling",
+                text: "Refrigerant inspection, leak checks and gas filling when required.",
+              },
+              {
+                icon: "🛠️",
+                title: "AC Installation",
+                text: "Installation and relocation support for split and window AC units.",
+              },
+            ].map((item) => (
+              <div
+                className="col-12 col-md-6"
+                key={item.title}
+              >
+                <div className="homeSolutionCard">
+                  <div className="homeSolutionIcon">
+                    {item.icon}
+                  </div>
 
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                    <Link to="/book-service">
+                      Request Service →
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* BRANDS */}
+      <section className="homeSection">
+        <div className="container">
+
+          <div className="homeSectionHeading">
+            <span className="homeEyebrow">
+              AC BRANDS
+            </span>
+            <h2>
+              AC Service for Major Brands
+            </h2>
+            <p>
+              Request service for split AC, window AC
+              and inverter AC models from popular brands.
+            </p>
+          </div>
+
+          <div className="row g-3 justify-content-center">
+            {brands.map((brand) => (
+              <div
+                className="col-6 col-sm-4 col-md-3 col-lg-2"
+                key={brand}
+              >
+                <div className="homeBrandCard">
+                  <span>❄️</span>
+                  <h3>{brand}</h3>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-muted mt-4 mb-0">
+            AC Repair 4U is an independent service provider.
+            Brand names are used for identification only.
+          </p>
+
+        </div>
+      </section>
+
+      {/* AI ASSISTANT */}
+      <section className="homeAISection">
+        <div className="container">
+          <div className="row align-items-center g-4">
+
+            <div className="col-12 col-lg-6">
               <span className="badge bg-warning text-dark mb-3">
-                AI Powered
+                AI AC ASSISTANT
               </span>
 
-              <h2 className="display-6 fw-bold text-white">
+              <h2>
                 Understand Your AC Problem Before Booking
               </h2>
 
-              <p className="text-white-50 fs-5">
-                Brand, model, purchase date aur problem enter karo.
-                AC Assistant tumhe possible issue aur service guidance dega.
+              <p>
+                Enter your AC brand, model, purchase date
+                and problem to receive possible causes,
+                safe checks and maintenance guidance.
               </p>
 
-
-              <div className="row text-white mt-4">
-
-                <div className="col-sm-6 mb-3">
-                  ✓ Check AC Age
-                </div>
-
-                <div className="col-sm-6 mb-3">
-                  ✓ Possible Problems
-                </div>
-
-                <div className="col-sm-6 mb-3">
-                  ✓ Safe Checks
-                </div>
-
-                <div className="col-sm-6 mb-3">
-                  ✓ Service Priority
-                </div>
-
-                <div className="col-sm-6 mb-3">
-                  ✓ Maintenance Guidance
-                </div>
-
-                <div className="col-sm-6 mb-3">
-                  ✓ Book Technician
-                </div>
-
+              <div className="row g-3 homeAIFeatures">
+                {[
+                  "✓ Check AC Age",
+                  "✓ Possible Problems",
+                  "✓ Safe Checks",
+                  "✓ Service Priority",
+                  "✓ Maintenance Tips",
+                  "✓ Book Technician",
+                ].map((item) => (
+                  <div
+                    className="col-12 col-sm-6"
+                    key={item}
+                  >
+                    {item}
+                  </div>
+                ))}
               </div>
-
 
               <Link
                 to="/ai-ac-assistant"
-                className="btn btn-warning btn-lg mt-3"
+                className="btn btn-warning btn-lg mt-4"
               >
-                Check My AC
+                Check My AC →
               </Link>
-
             </div>
 
-
-            <div className="col-lg-6 mt-5 mt-lg-0">
-
-              <div className="aiDemoCard">
-
-                <div className="d-flex justify-content-between align-items-center">
-
+            <div className="col-12 col-lg-6">
+              <div className="homeAIDemo">
+                <div className="d-flex justify-content-between align-items-center gap-2">
                   <div>
                     <small className="text-muted">
-                      AI AC HEALTH REPORT
+                      AC HEALTH REPORT
                     </small>
-
-                    <h4 className="fw-bold mb-0">
-                      Split AC
-                    </h4>
+                    <h3>Split AC</h3>
                   </div>
 
                   <span className="badge bg-success">
-                    Analysis Ready
+                    Demo Report
                   </span>
-
                 </div>
 
                 <hr />
 
-                <div className="mb-3">
-                  <small className="text-muted">
-                    AC Brand
-                  </small>
+                <p className="mb-2">
+                  <strong>AC Brand:</strong> Daikin
+                </p>
 
-                  <div className="fw-semibold">
-                    Daikin
-                  </div>
-                </div>
-
-                <div className="mb-3">
-                  <small className="text-muted">
-                    Current Problem
-                  </small>
-
-                  <div className="fw-semibold">
-                    Low Cooling
-                  </div>
-                </div>
+                <p className="mb-3">
+                  <strong>Problem:</strong> Low Cooling
+                </p>
 
                 <div className="alert alert-warning">
-                  Possible causes may include dirty filters,
-                  airflow problems or maintenance requirement.
+                  Possible causes include dirty filters,
+                  blocked airflow or a refrigerant-related issue.
+                  A technician may be needed for diagnosis.
                 </div>
 
                 <Link
@@ -448,410 +483,284 @@ const acBrands = [
                 >
                   Start AC Check
                 </Link>
-
               </div>
-
             </div>
 
           </div>
-
         </div>
-
       </section>
-
 
       {/* WHY CHOOSE US */}
-
-      <section className="py-5 bg-light">
-
+      <section className="homeSection bg-light">
         <div className="container">
 
-          <div className="text-center mb-5">
-
-            <h2 className="fw-bold">
-              Why Choose Us?
+          <div className="homeSectionHeading">
+            <span className="homeEyebrow">
+              WHY CHOOSE US
+            </span>
+            <h2>
+              Easy AC Service Booking
             </h2>
-
-            <p className="text-muted">
-              Simple booking, professional service and easy support.
+            <p>
+              Request AC service with a simple booking process.
             </p>
-
           </div>
 
-
-          <div className="row g-4 text-center">
-
-            <div className="col-md-4">
-
-              <div className="featureBox">
-
-                <div className="featureIcon">
-                  ⚡
-                </div>
-
-                <h4>
-                  Fast Service
-                </h4>
-
-                <p className="text-muted">
-                  Quick response and easy technician booking.
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <div className="col-md-4">
-
-              <div className="featureBox">
-
-                <div className="featureIcon">
-                  👨‍🔧
-                </div>
-
-                <h4>
-                  Professional Work
-                </h4>
-
-                <p className="text-muted">
-                  AC problems ke liye proper service process.
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <div className="col-md-4">
-
-              <div className="featureBox">
-
-                <div className="featureIcon">
-                  💬
-                </div>
-
-                <h4>
-                  Easy Support
-                </h4>
-
-                <p className="text-muted">
-                  Email aur WhatsApp booking support.
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-{/* SERVICE AREAS PREVIEW */}
-
-<section className="py-5 bg-light">
-  <div className="container">
-
-    <div className="row justify-content-center mb-4">
-      <div className="col-lg-8 text-center">
-
-        <p className="text-primary fw-bold mb-2">
-          SERVICE AREAS
-        </p>
-
-        <h2 className="fw-bold">
-  AC Repair & Service Across Mumbai, Navi Mumbai & Thane
-</h2>
-
-<p className="text-muted">
-  Book AC repair, cleaning, installation and maintenance services
-  across Mumbai, Navi Mumbai, Thane and nearby areas.
-</p>
-
-      </div>
-    </div>
-
-
-    <div className="row g-3">
-
-      {[
-        "Vashi",
-        "Sanpada",
-        "Nerul",
-        "Seawoods",
-        "CBD Belapur",
-        "Kharghar",
-        "Airoli",
-        "Ghansoli",
-      ].map((area, index) => (
-
-        <div
-          key={index}
-          className="col-12 col-sm-6 col-lg-3"
-        >
-
-          <div className="card h-100 border-0 shadow-sm rounded-4">
-
-            <div className="card-body d-flex align-items-center gap-3">
-
+          <div className="row g-4">
+            {[
+              {
+                icon: "⚡",
+                title: "Easy Booking",
+                text: "Submit your AC service request online in a few steps.",
+              },
+              {
+                icon: "👨‍🔧",
+                title: "Technician Support",
+                text: "Share your AC issue and location to request technician assistance.",
+              },
+              {
+                icon: "💬",
+                title: "Easy Communication",
+                text: "Contact the team regarding appointments and service enquiries.",
+              },
+            ].map((item) => (
               <div
-                className="bg-primary-subtle text-primary rounded-circle d-flex align-items-center justify-content-center"
-                style={{
-                  width: "45px",
-                  height: "45px",
-                  minWidth: "45px",
-                }}
+                className="col-12 col-md-4"
+                key={item.title}
               >
-                📍
+                <div className="homeFeatureCard">
+                  <span>{item.icon}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </div>
               </div>
-
-              <div>
-
-                <h3 className="h6 fw-bold mb-1">
-                  {area}
-                </h3>
-
-                <small className="text-muted">
-                  AC Service Available
-                </small>
-
-              </div>
-
-            </div>
-
+            ))}
           </div>
 
         </div>
-
-      ))}
-
-    </div>
-
-
-    <div className="text-center mt-4">
-
-      <Link
-        to="/areas"
-        className="btn btn-outline-primary px-4"
-      >
-        View All Service Areas
-      </Link>
-
-    </div>
-
-  </div>
-</section>
-
-{/* FAQ PREVIEW */}
-
-<section className="py-5 bg-white">
-  <div className="container">
-
-    <div className="row justify-content-center">
-
-      <div className="col-12 col-lg-9">
-
-        <div className="text-center mb-4">
-
-          <p className="text-primary fw-bold mb-2">
-            NEED HELP?
-          </p>
-
-          <h2 className="fw-bold">
-            Frequently Asked Questions
-          </h2>
-
-          <p className="text-muted">
-            Common AC service and booking questions.
-          </p>
-
-        </div>
-
-
-        <div
-          className="accordion shadow-sm rounded-4 overflow-hidden"
-          id="homeFaq"
-        >
-
-          {/* FAQ 1 */}
-
-          <div className="accordion-item border-0 border-bottom">
-
-            <h3 className="accordion-header">
-
-              <button
-                className="accordion-button fw-semibold"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#homeFaqOne"
-              >
-                AC service kitne time me karani chahiye?
-              </button>
-
-            </h3>
-
-            <div
-              id="homeFaqOne"
-              className="accordion-collapse collapse show"
-              data-bs-parent="#homeFaq"
-            >
-
-              <div className="accordion-body text-muted">
-                AC usage aur dust conditions ke hisab se regular
-                cleaning aur servicing useful hoti hai.
-              </div>
-
-            </div>
-
-          </div>
-
-
-          {/* FAQ 2 */}
-
-          <div className="accordion-item border-0 border-bottom">
-
-            <h3 className="accordion-header">
-
-              <button
-                className="accordion-button collapsed fw-semibold"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#homeFaqTwo"
-              >
-                AC cooling kam kyu karta hai?
-              </button>
-
-            </h3>
-
-            <div
-              id="homeFaqTwo"
-              className="accordion-collapse collapse"
-              data-bs-parent="#homeFaq"
-            >
-
-              <div className="accordion-body text-muted">
-                Dirty filters, blocked airflow, coil issue ya
-                refrigerant related problem cooling ko affect kar sakti hai.
-              </div>
-
-            </div>
-
-          </div>
-
-
-          {/* FAQ 3 */}
-
-          <div className="accordion-item border-0 border-bottom">
-
-            <h3 className="accordion-header">
-
-              <button
-                className="accordion-button collapsed fw-semibold"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#homeFaqThree"
-              >
-                Kya har AC service me gas refill required hoti hai?
-              </button>
-
-            </h3>
-
-            <div
-              id="homeFaqThree"
-              className="accordion-collapse collapse"
-              data-bs-parent="#homeFaq"
-            >
-
-              <div className="accordion-body text-muted">
-                Nahi. Gas refill tabhi required hoti hai jab technician
-                inspection me refrigerant level ya leakage related problem
-                confirm ho.
-              </div>
-
-            </div>
-
-          </div>
-
-
-          {/* FAQ 4 */}
-
-          <div className="accordion-item border-0">
-
-            <h3 className="accordion-header">
-
-              <button
-                className="accordion-button collapsed fw-semibold"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#homeFaqFour"
-              >
-                Service booking kaise karein?
-              </button>
-
-            </h3>
-
-            <div
-              id="homeFaqFour"
-              className="accordion-collapse collapse"
-              data-bs-parent="#homeFaq"
-            >
-
-              <div className="accordion-body text-muted">
-                Book Service page par apni contact details, AC details,
-                preferred date, time aur address enter karke request
-                submit kar sakte hain.
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div className="text-center mt-4">
-
-          <Link
-            to="/faq"
-            className="btn btn-outline-primary px-4"
-          >
-            View All FAQs
-          </Link>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
-      {/* FINAL CTA */}
-
-      <section className="py-5 bg-primary text-white">
-
-        <div className="container text-center">
-
-          <h2 className="fw-bold">
-            AC Problem? Book Your Service Today
-          </h2>
-
-          <p className="lead">
-            Fill the booking form and our team will contact you.
-          </p>
-
-          <Link
-            to="/book-service"
-            className="btn btn-warning btn-lg px-5"
-          >
-            Book Service
-          </Link>
-
-        </div>
-
       </section>
 
+      {/* CITY PAGES */}
+      <section className="homeSection">
+        <div className="container">
+
+          <div className="homeSectionHeading">
+            <span className="homeEyebrow">
+              OUR SERVICE LOCATIONS
+            </span>
+            <h2>
+              AC Repair Across Mumbai, Navi Mumbai &amp; Thane
+            </h2>
+            <p>
+              Explore our city service pages and check
+              availability in your locality.
+            </p>
+          </div>
+
+          <div className="row g-4">
+            {cityLinks.map((city) => (
+              <div
+                className="col-12 col-md-4"
+                key={city.name}
+              >
+                <Link
+                  to={city.path}
+                  className="homeCityCard"
+                >
+                  <span>{city.icon}</span>
+                  <h3>AC Service {city.name}</h3>
+                  <p>
+                    Repair, servicing, cleaning,
+                    gas filling and installation.
+                  </p>
+                  <strong>Explore Services →</strong>
+                </Link>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* SEARCH SERVICE AREAS */}
+      <section className="homeSection bg-light">
+        <div className="container">
+
+          <div className="homeSectionHeading">
+            <span className="homeEyebrow">
+              FIND YOUR AREA
+            </span>
+            <h2>
+              AC Service Near You
+            </h2>
+            <p>
+              Search localities across Mumbai,
+              Navi Mumbai and Thane.
+            </p>
+          </div>
+
+          <div className="homeAreaSearch mx-auto">
+            <label
+              htmlFor="homeAreaInput"
+              className="form-label fw-bold"
+            >
+              📍 Search Your Location
+            </label>
+
+            <input
+              id="homeAreaInput"
+              type="search"
+              className="form-control form-control-lg"
+              placeholder="Vashi, Andheri, Bandra, Thane..."
+              value={areaSearch}
+              onChange={(event) =>
+                setAreaSearch(event.target.value)
+              }
+            />
+          </div>
+
+          <div className="row g-3 mt-3">
+            {filteredAreas.length ? (
+              filteredAreas.map((area) => (
+                <div
+                  className="col-6 col-md-4 col-lg-3"
+                  key={`${area.city}-${area.name}`}
+                >
+                  <div className="homeAreaCard">
+                    <span>📍</span>
+                    <div>
+                      <h3>{area.name}</h3>
+                      <small>{area.city}</small>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="col-12 text-center">
+                <div className="homeNoArea">
+                  <h3>Area Not Listed?</h3>
+                  <p>
+                    Contact us to confirm technician
+                    availability at your location.
+                  </p>
+                  <Link
+                    to="/contact"
+                    className="btn btn-primary"
+                  >
+                    Contact Us
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="text-center mt-4">
+            <Link
+              to="/areas"
+              className="btn btn-outline-primary px-4"
+            >
+              View All Service Areas →
+            </Link>
+          </div>
+
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="homeSection">
+        <div className="container">
+
+          <div className="homeSectionHeading">
+            <span className="homeEyebrow">
+              FREQUENTLY ASKED QUESTIONS
+            </span>
+            <h2>
+              AC Repair &amp; Servicing FAQs
+            </h2>
+          </div>
+
+          <div className="homeFAQWrapper">
+            <div
+              className="accordion"
+              id="homeFaqAccordion"
+            >
+              {faqs.map((faq, index) => (
+                <div
+                  className="accordion-item"
+                  key={faq.question}
+                >
+                  <h3 className="accordion-header">
+                    <button
+                      className={`accordion-button ${
+                        index === 0 ? "" : "collapsed"
+                      }`}
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target={`#homeFaq${index}`}
+                      aria-expanded={index === 0}
+                      aria-controls={`homeFaq${index}`}
+                    >
+                      {faq.question}
+                    </button>
+                  </h3>
+
+                  <div
+                    id={`homeFaq${index}`}
+                    className={`accordion-collapse collapse ${
+                      index === 0 ? "show" : ""
+                    }`}
+                    data-bs-parent="#homeFaqAccordion"
+                  >
+                    <div className="accordion-body">
+                      {faq.answer}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="text-center mt-4">
+            <Link
+              to="/faq"
+              className="btn btn-outline-primary px-4"
+            >
+              View All FAQs
+            </Link>
+          </div>
+
+        </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="homeFinalCTA">
+        <div className="container text-center">
+          <h2>
+            Need AC Repair or Servicing in Mumbai?
+          </h2>
+
+          <p>
+            Request AC repair, gas filling,
+            cleaning or installation at your location.
+          </p>
+
+          <div className="d-flex flex-column flex-sm-row justify-content-center gap-3">
+            <Link
+              to="/book-service"
+              className="btn btn-warning btn-lg fw-bold"
+            >
+              Book AC Service
+            </Link>
+
+            <Link
+              to="/contact"
+              className="btn btn-outline-light btn-lg"
+            >
+              Contact Us
+            </Link>
+          </div>
+        </div>
+      </section>
     </>
   );
 };

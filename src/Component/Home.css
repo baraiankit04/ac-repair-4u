@@ -263,3 +263,826 @@
   }
 
 }
+
+/* GLOBAL HOME */
+.homeHero,
+.homeSection,
+.homeAISection,
+.homeFinalCTA {
+  width: 100%;
+  max-width: 100%;
+}
+
+.homeHero *,
+.homeSection *,
+.homeAISection *,
+.homeFinalCTA * {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.homeSection {
+  padding: 80px 0;
+}
+
+.homeSectionHeading {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 42px;
+}
+
+.homeEyebrow {
+  display: inline-block;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+}
+
+.homeSectionHeading h2 {
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 800;
+  color: #14213d;
+  line-height: 1.25;
+}
+
+.homeSectionHeading p {
+  color: #64748b;
+  line-height: 1.75;
+  margin-top: 12px;
+}
+
+/* HERO */
+.homeHero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    125deg,
+    #061a36 0%,
+    #0b3261 55%,
+    #135c9f 100%
+  );
+  color: #fff;
+  padding: 78px 0;
+}
+
+.homeHero::before {
+  content: "";
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.12);
+  right: -180px;
+  top: -200px;
+  pointer-events: none;
+}
+
+.homeHeroRow {
+  position: relative;
+  z-index: 1;
+  min-height: 520px;
+}
+
+.homeHeroContent {
+  max-width: 620px;
+}
+
+.homeHeroBadge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  padding: 9px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 22px;
+}
+
+.homeHeroTitle {
+  font-size: clamp(36px, 4.4vw, 62px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1.5px;
+  margin-bottom: 20px;
+  overflow-wrap: break-word;
+}
+
+.homeHeroTitle span {
+  display: block;
+  color: #facc15;
+}
+
+.homeHeroDescription {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #dbeafe;
+  max-width: 570px;
+  margin-bottom: 20px;
+}
+
+.homeTypingBox {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  font-size: 16px;
+  margin-bottom: 25px;
+  min-height: 30px;
+}
+
+.homeTypedText {
+  color: #facc15;
+  overflow-wrap: anywhere;
+}
+
+.homeTypingCursor {
+  animation: homeBlink 0.8s infinite;
+}
+
+@keyframes homeBlink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.homeHeroButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.homeHeroButtons .btn {
+  padding: 13px 22px;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: transform 0.2s ease;
+}
+
+.homeHeroButtons .btn:hover {
+  transform: translateY(-2px);
+}
+
+.homeHeroBenefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+  margin-top: 32px;
+  font-size: 13px;
+  color: #dbeafe;
+}
+
+/* HERO IMAGE */
+.homeHeroImageBox {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 12px 12px 30px;
+}
+
+.homeHeroImage {
+  display: block;
+  width: 100%;
+  height: 430px;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.28);
+}
+
+.homeHeroFloatingCard {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  color: #14213d;
+  padding: 14px 18px;
+  border-radius: 14px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+  max-width: calc(100% - 20px);
+}
+
+.homeFloatingIcon {
+  font-size: 30px;
+}
+
+.homeHeroFloatingCard strong {
+  display: block;
+  font-size: 15px;
+}
+
+.homeHeroFloatingCard small {
+  display: block;
+  color: #64748b;
+  font-size: 12px;
+}
+
+/* SERVICE CARDS */
+.homeServiceCard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: 0.25s;
+}
+
+.homeServiceCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.1);
+}
+
+.homeServiceCard img {
+  width: 100%;
+  height: 205px;
+  object-fit: cover;
+}
+
+.homeServiceBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 22px;
+}
+
+.homeServiceBody h3 {
+  font-size: 19px;
+  font-weight: 750;
+  color: #14213d;
+}
+
+.homeServiceBody p {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.7;
+  margin: 10px 0 20px;
+}
+
+.homeServiceBody .btn {
+  align-self: flex-start;
+  border-radius: 8px;
+}
+
+/* SOLUTIONS */
+.homeSolutionCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  height: 100%;
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+}
+
+.homeSolutionIcon {
+  flex-shrink: 0;
+  font-size: 27px;
+  background: #eff6ff;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.homeSolutionCard h3 {
+  font-size: 19px;
+  font-weight: 750;
+  color: #14213d;
+}
+
+.homeSolutionCard p {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.homeSolutionCard a {
+  color: #2563eb;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* BRANDS */
+.homeBrandCard {
+  height: 100%;
+  text-align: center;
+  padding: 24px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #fff;
+  transition: 0.2s;
+}
+
+.homeBrandCard:hover {
+  border-color: #2563eb;
+  transform: translateY(-3px);
+}
+
+.homeBrandCard span {
+  display: block;
+  font-size: 27px;
+  margin-bottom: 12px;
+}
+
+.homeBrandCard h3 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* AI SECTION */
+.homeAISection {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #071d3a, #174b83);
+  color: white;
+  overflow: hidden;
+}
+
+.homeAISection h2 {
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.homeAISection p {
+  color: #dbeafe;
+  line-height: 1.8;
+  margin-top: 18px;
+}
+
+.homeAIFeatures {
+  font-size: 15px;
+  color: #e0f2fe;
+}
+
+.homeAIDemo {
+  background: #fff;
+  color: #14213d;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.homeAIDemo h3 {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 5px 0 0;
+}
+
+.homeAIDemo p {
+  color: #334155;
+  margin-top: 0;
+}
+
+.homeAIDemo .alert {
+  font-size: 14px;
+}
+
+/* FEATURES */
+.homeFeatureCard {
+  text-align: center;
+  background: #fff;
+  padding: 35px 24px;
+  border-radius: 18px;
+  height: 100%;
+  border: 1px solid #e2e8f0;
+}
+
+.homeFeatureCard span {
+  display: block;
+  font-size: 38px;
+  margin-bottom: 18px;
+}
+
+.homeFeatureCard h3 {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.homeFeatureCard p {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+/* CITY CARDS */
+.homeCityCard {
+  display: block;
+  height: 100%;
+  padding: 30px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.homeCityCard:hover {
+  border-color: #2563eb;
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.07);
+}
+
+.homeCityCard span {
+  font-size: 32px;
+}
+
+.homeCityCard h3 {
+  font-size: 21px;
+  font-weight: 800;
+  margin-top: 18px;
+  color: #14213d;
+}
+
+.homeCityCard p {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+.homeCityCard strong {
+  color: #2563eb;
+  font-size: 14px;
+}
+
+/* AREAS */
+.homeAreaSearch {
+  max-width: 600px;
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 5px 25px rgba(15, 23, 42, 0.06);
+}
+
+.homeAreaSearch .form-control {
+  border-radius: 10px;
+}
+
+.homeAreaCard {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  padding: 17px;
+  border: 1px solid #e2e8f0;
+  border-radius: 13px;
+}
+
+.homeAreaCard > span {
+  font-size: 23px;
+  flex-shrink: 0;
+}
+
+.homeAreaCard h3 {
+  font-size: 15px;
+  font-weight: 750;
+  margin: 0 0 4px;
+  overflow-wrap: anywhere;
+}
+
+.homeAreaCard small {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.homeNoArea {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+}
+
+.homeNoArea h3 {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+/* FAQ */
+.homeFAQWrapper {
+  max-width: 900px;
+  margin: auto;
+}
+
+.homeFAQWrapper .accordion-item {
+  border-color: #e2e8f0;
+}
+
+.homeFAQWrapper .accordion-button {
+  font-weight: 700;
+  padding: 20px;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.homeFAQWrapper .accordion-body {
+  line-height: 1.8;
+  color: #475569;
+}
+
+/* FINAL CTA */
+.homeFinalCTA {
+  background: linear-gradient(135deg, #1555b2, #08376f);
+  padding: 70px 0;
+  color: white;
+}
+
+.homeFinalCTA h2 {
+  font-size: clamp(27px, 3vw, 39px);
+  font-weight: 800;
+}
+
+.homeFinalCTA p {
+  max-width: 650px;
+  margin: 18px auto 28px;
+  color: #dbeafe;
+  line-height: 1.7;
+}
+
+/* TABLET */
+@media (max-width: 991.98px) {
+  .homeHero {
+    padding: 55px 0 65px;
+  }
+
+  .homeHeroRow {
+    min-height: auto;
+  }
+
+  .homeHeroContent {
+    text-align: center;
+    max-width: 680px;
+    margin: auto;
+  }
+
+  .homeHeroDescription {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .homeTypingBox,
+  .homeHeroButtons,
+  .homeHeroBenefits {
+    justify-content: center;
+  }
+
+  .homeHeroImageBox {
+    max-width: 580px;
+    margin-top: 12px;
+  }
+
+  .homeSection,
+  .homeAISection {
+    padding: 65px 0;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 575.98px) {
+  .homeHero {
+    padding: 38px 0 48px;
+  }
+
+  .homeHero .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .homeHeroRow {
+    --bs-gutter-x: 0;
+    --bs-gutter-y: 24px;
+  }
+
+  .homeHeroBadge {
+    font-size: 11px;
+    padding: 8px 12px;
+    margin-bottom: 18px;
+  }
+
+  .homeHeroTitle {
+    font-size: clamp(30px, 8.2vw, 39px);
+    line-height: 1.18;
+    letter-spacing: -0.6px;
+    margin-bottom: 16px;
+  }
+
+  .homeHeroDescription {
+    font-size: 14px;
+    line-height: 1.75;
+    margin-bottom: 17px;
+  }
+
+  .homeTypingBox {
+    font-size: 13px;
+    min-height: 24px;
+    margin-bottom: 20px;
+  }
+
+  .homeHeroButtons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 11px;
+    width: 100%;
+  }
+
+  .homeHeroButtons .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 48px;
+    font-size: 14px;
+    padding: 11px 15px;
+  }
+
+  .homeHeroBenefits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    text-align: left;
+    margin-top: 25px;
+    font-size: 12px;
+  }
+
+  .homeHeroImageBox {
+    margin-top: 4px;
+    padding: 8px 5px 30px;
+  }
+
+  .homeHeroImage {
+    height: 260px;
+    border-radius: 17px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .homeHeroFloatingCard {
+    left: 0;
+    bottom: 4px;
+    padding: 10px 12px;
+    border-radius: 11px;
+  }
+
+  .homeFloatingIcon {
+    font-size: 23px;
+  }
+
+  .homeHeroFloatingCard strong {
+    font-size: 13px;
+  }
+
+  .homeHeroFloatingCard small {
+    font-size: 11px;
+  }
+
+  .homeSection,
+  .homeAISection {
+    padding: 48px 0;
+  }
+
+  .homeSectionHeading {
+    margin-bottom: 28px;
+  }
+
+  .homeSectionHeading h2 {
+    font-size: 25px;
+  }
+
+  .homeSectionHeading p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .homeServiceCard img {
+    height: 190px;
+  }
+
+  .homeServiceBody {
+    padding: 20px;
+  }
+
+  .homeSolutionCard {
+    padding: 18px;
+    gap: 12px;
+  }
+
+  .homeSolutionIcon {
+    font-size: 22px;
+    padding: 9px;
+  }
+
+  .homeSolutionCard h3 {
+    font-size: 17px;
+  }
+
+  .homeBrandCard {
+    padding: 18px 8px;
+  }
+
+  .homeBrandCard h3 {
+    font-size: 12px;
+  }
+
+  .homeAISection h2 {
+    font-size: 27px;
+  }
+
+  .homeAISection p {
+    font-size: 14px;
+  }
+
+  .homeAIDemo {
+    padding: 19px;
+  }
+
+  .homeAIDemo .badge {
+    font-size: 10px;
+  }
+
+  .homeCityCard {
+    padding: 22px;
+  }
+
+  .homeAreaSearch {
+    padding: 16px;
+  }
+
+  .homeAreaCard {
+    padding: 11px;
+    gap: 6px;
+    align-items: flex-start;
+  }
+
+  .homeAreaCard > span {
+    font-size: 16px;
+  }
+
+  .homeAreaCard h3 {
+    font-size: 13px;
+  }
+
+  .homeAreaCard small {
+    font-size: 11px;
+  }
+
+  .homeFAQWrapper .accordion-button {
+    font-size: 14px;
+    padding: 17px;
+  }
+
+  .homeFinalCTA {
+    padding: 50px 0;
+  }
+
+  .homeFinalCTA h2 {
+    font-size: 27px;
+  }
+
+  .homeFinalCTA p {
+    font-size: 14px;
+  }
+
+  .homeFinalCTA .btn {
+    width: 100%;
+  }
+}
+
+/* VERY SMALL PHONES */
+@media (max-width: 360px) {
+  .homeHeroTitle {
+    font-size: 29px;
+  }
+
+  .homeHeroBenefits {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .homeHeroImage {
+    height: 220px;
+  }
+
+  .homeAreaCard {
+    flex-direction: column;
+  }
+}
+
+/* ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+  .homeServiceCard,
+  .homeBrandCard,
+  .homeCityCard,
+  .homeHeroButtons .btn {
+    transition: none;
+  }
+
+  .homeTypingCursor {
+    animation: none;
+  }
+}

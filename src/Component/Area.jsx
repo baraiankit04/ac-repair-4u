@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import SEO from "./SEO";
 const Area = () => {
   const [search, setSearch] = useState("");
 
@@ -20,6 +20,10 @@ const Area = () => {
     metaDescription.content =
       "Check AC repair and service availability across Mumbai, Navi Mumbai and Thane. Find your area and book AC service online.";
   }, []);
+  <SEO
+  title="AC Repair & Servicing in Mumbai, Navi Mumbai & Thane"
+  description="Looking for AC repair near you? AC Repair 4U offers AC servicing, gas filling, installation, cleaning and maintenance across Mumbai, Navi Mumbai and Thane."
+/>
 
   // ==============================
   // SERVICE AREAS
