@@ -10,19 +10,17 @@ const Canonical = () => {
     const cleanPath =
       pathname === "/" ? "/" : pathname.replace(/\/+$/, "");
 
-    const canonicalURL = SITE_URL + cleanPath;
-
     let canonical = document.querySelector(
       'link[rel="canonical"]'
     );
 
     if (!canonical) {
       canonical = document.createElement("link");
-      canonical.setAttribute("rel", "canonical");
+      canonical.rel = "canonical";
       document.head.appendChild(canonical);
     }
 
-    canonical.setAttribute("href", canonicalURL);
+    canonical.href = `${SITE_URL}${cleanPath}`;
   }, [pathname]);
 
   return null;
