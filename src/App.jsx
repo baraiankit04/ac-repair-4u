@@ -23,9 +23,11 @@ import AcServiceMumbai from "./Component/AcServiceMumbai";
 import AcServiceNaviMumbai from "./Component/AcServiceNaviMumbai";
 import AcServiceThane from "./Component/AcServiceThane";
 import BusinessSchema from "./Component/BusinessSchema";
+import Canonical from "./Component/Canonical";
 function App() {
   return (
     <BrowserRouter>
+    <Canonical />
     <BusinessSchema />
       <ScrollToTop />
       <Navbar />
