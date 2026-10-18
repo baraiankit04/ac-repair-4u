@@ -24,12 +24,14 @@ import AcServiceNaviMumbai from "./Component/AcServiceNaviMumbai";
 import AcServiceThane from "./Component/AcServiceThane";
 import BusinessSchema from "./Component/BusinessSchema";
 import Canonical from "./Component/Canonical";
+import ScrollAnimation from "./Component/ScrollAnimation";
 function App() {
   return (
     <BrowserRouter>
     <Canonical />
     <BusinessSchema />
       <ScrollToTop />
+      <ScrollAnimation />
       <Navbar />
 
       <Routes>

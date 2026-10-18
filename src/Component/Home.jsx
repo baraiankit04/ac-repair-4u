@@ -163,7 +163,7 @@ const Home = () => {
           <div className="row align-items-center homeHeroRow g-4">
 
             <div className="col-12 col-lg-6">
-              <div className="homeHeroContent">
+              <div className="homeHeroContent" data-aos="fade-up" data-aos-duration="750">
 
                 <span className="homeHeroBadge">
                   ❄️ AC Repair 4U | Mumbai
@@ -215,7 +215,7 @@ const Home = () => {
             </div>
 
             <div className="col-12 col-lg-6">
-              <div className="homeHeroImageBox">
+              <div className="homeHeroImageBox" data-aos="zoom-in" data-aos-duration="950" data-aos-delay="100">
                 <img
                   src="/images/heroac.jpg"
                   alt="AC repair and servicing technician in Mumbai"
@@ -243,7 +243,7 @@ const Home = () => {
       <section className="homeSection">
         <div className="container">
 
-          <div className="homeSectionHeading">
+          <div className="homeSectionHeading" data-aos="fade-up">
             <span className="homeEyebrow">
               OUR SERVICES
             </span>
@@ -258,10 +258,12 @@ const Home = () => {
           </div>
 
           <div className="row g-4">
-            {services.map((service) => (
+            {services.map((service, index) => (
               <div
                 className="col-12 col-sm-6 col-lg-3"
                 key={service.title}
+                data-aos="fade-up"
+                data-aos-delay={Math.min(index * 70, 210)}
               >
                 <article className="homeServiceCard">
                   <img
@@ -302,7 +304,7 @@ const Home = () => {
       <section className="homeSection bg-light">
         <div className="container">
 
-          <div className="homeSectionHeading">
+          <div className="homeSectionHeading" data-aos="fade-up">
             <span className="homeEyebrow">
               AC SERVICE SOLUTIONS
             </span>
@@ -336,10 +338,12 @@ const Home = () => {
                 title: "AC Installation",
                 text: "Installation and relocation support for split and window AC units.",
               },
-            ].map((item) => (
+            ].map((item, index) => (
               <div
                 className="col-12 col-md-6"
                 key={item.title}
+                data-aos="fade-up"
+                data-aos-delay={Math.min(index * 70, 180)}
               >
                 <div className="homeSolutionCard">
                   <div className="homeSolutionIcon">
@@ -365,7 +369,7 @@ const Home = () => {
       <section className="homeSection">
         <div className="container">
 
-          <div className="homeSectionHeading">
+          <div className="homeSectionHeading" data-aos="fade-up">
             <span className="homeEyebrow">
               AC BRANDS
             </span>
@@ -379,10 +383,12 @@ const Home = () => {
           </div>
 
           <div className="row g-3 justify-content-center">
-            {brands.map((brand) => (
+            {brands.map((brand, index) => (
               <div
                 className="col-6 col-sm-4 col-md-3 col-lg-2"
                 key={brand}
+                data-aos="zoom-in"
+                data-aos-delay={(index % 6) * 35}
               >
                 <div className="homeBrandCard">
                   <span>❄️</span>
@@ -428,7 +434,7 @@ const Home = () => {
                   "✓ Service Priority",
                   "✓ Maintenance Tips",
                   "✓ Book Technician",
-                ].map((item) => (
+                ].map((item, index) => (
                   <div
                     className="col-12 col-sm-6"
                     key={item}
@@ -447,7 +453,7 @@ const Home = () => {
             </div>
 
             <div className="col-12 col-lg-6">
-              <div className="homeAIDemo">
+              <div className="homeAIDemo" data-aos="fade-up">
                 <div className="d-flex justify-content-between align-items-center gap-2">
                   <div>
                     <small className="text-muted">
@@ -494,7 +500,7 @@ const Home = () => {
       <section className="homeSection bg-light">
         <div className="container">
 
-          <div className="homeSectionHeading">
+          <div className="homeSectionHeading" data-aos="fade-up">
             <span className="homeEyebrow">
               WHY CHOOSE US
             </span>
@@ -523,10 +529,12 @@ const Home = () => {
                 title: "Easy Communication",
                 text: "Contact the team regarding appointments and service enquiries.",
               },
-            ].map((item) => (
+            ].map((item, index) => (
               <div
                 className="col-12 col-md-4"
                 key={item.title}
+                data-aos="fade-up"
+                data-aos-delay={Math.min(index * 70, 180)}
               >
                 <div className="homeFeatureCard">
                   <span>{item.icon}</span>
@@ -544,7 +552,7 @@ const Home = () => {
       <section className="homeSection">
         <div className="container">
 
-          <div className="homeSectionHeading">
+          <div className="homeSectionHeading" data-aos="fade-up">
             <span className="homeEyebrow">
               OUR SERVICE LOCATIONS
             </span>
@@ -558,10 +566,12 @@ const Home = () => {
           </div>
 
           <div className="row g-4">
-            {cityLinks.map((city) => (
+            {cityLinks.map((city, index) => (
               <div
                 className="col-12 col-md-4"
                 key={city.name}
+                data-aos="fade-up"
+                data-aos-delay={index * 90}
               >
                 <Link
                   to={city.path}
@@ -586,7 +596,7 @@ const Home = () => {
       <section className="homeSection bg-light">
         <div className="container">
 
-          <div className="homeSectionHeading">
+          <div className="homeSectionHeading" data-aos="fade-up">
             <span className="homeEyebrow">
               FIND YOUR AREA
             </span>
@@ -599,7 +609,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="homeAreaSearch mx-auto">
+          <div className="homeAreaSearch mx-auto" data-aos="fade-up">
             <label
               htmlFor="homeAreaInput"
               className="form-label fw-bold"
@@ -625,6 +635,7 @@ const Home = () => {
                 <div
                   className="col-6 col-md-4 col-lg-3"
                   key={`${area.city}-${area.name}`}
+                  data-aos="fade-up"
                 >
                   <div className="homeAreaCard">
                     <span>📍</span>
@@ -670,7 +681,7 @@ const Home = () => {
       <section className="homeSection">
         <div className="container">
 
-          <div className="homeSectionHeading">
+          <div className="homeSectionHeading" data-aos="fade-up">
             <span className="homeEyebrow">
               FREQUENTLY ASKED QUESTIONS
             </span>
@@ -679,7 +690,7 @@ const Home = () => {
             </h2>
           </div>
 
-          <div className="homeFAQWrapper">
+          <div className="homeFAQWrapper" data-aos="fade-up">
             <div
               className="accordion"
               id="homeFaqAccordion"
@@ -733,7 +744,7 @@ const Home = () => {
       </section>
 
       {/* FINAL CTA */}
-      <section className="homeFinalCTA">
+      <section className="homeFinalCTA" data-aos="fade-up">
         <div className="container text-center">
           <h2>
             Need AC Repair or Servicing in Mumbai?
